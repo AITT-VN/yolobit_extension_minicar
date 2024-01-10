@@ -1,0 +1,26 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="MINI CAR" colour="#0056f7" icon="car-side">
+    <block type="minicar_init"/>
+    <block type="minicar_move">
+      <value name="speed">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="minicar_move_delay">
+      <value name="speed">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+      <value name="time">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="minicar_stop"/>
+    <block type="remote_control_processing"/>
+  </category>
+</xml>
