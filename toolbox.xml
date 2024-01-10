@@ -22,5 +22,6 @@
     </block>
     <block type="minicar_stop"/>
     <block type="remote_control_processing"/>
+    <block type="remote_control_on_button_pressed"/>
   </category>
 </xml>
