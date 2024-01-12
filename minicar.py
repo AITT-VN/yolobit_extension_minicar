@@ -43,14 +43,10 @@ class MINICAR():
 
     def stop(self):
         self.set_wheel_speed(0, 0)
-        time.sleep_ms(20)
 
     def set_wheel_speed(self, servo1_speed, servo2_speed):
         self.servo360_write(0, servo1_speed)
         self.servo360_write(1, servo2_speed)
-        time.sleep_ms(200)
-        self.servo1_speed = servo1_speed
-        self.servo2_speed = servo2_speed
 
     def servo_write(self, index, value, max=180):
         if index not in [0, 1]:

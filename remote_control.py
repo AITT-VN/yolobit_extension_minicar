@@ -22,7 +22,7 @@ class RemoteControlMode():
 
     def __init__(self):
         self.user_speed = 100
-        self._speed = 100
+        self._speed = 50
         self._cmd = None
         self._last_cmd = None
         
@@ -40,7 +40,7 @@ class RemoteControlMode():
             self.user_speed = speed
         
     def on_ble_cmd_received(self, cmd):
-        print('New command: ', cmd)
+        #print('New command: ', cmd)
         self._cmd = cmd
     
     def set_command(self, cmd, handler):
@@ -53,12 +53,14 @@ class RemoteControlMode():
     def run(self):
 
         if self._cmd != self._last_cmd: # got new command
-            self._speed = round(self.user_speed*0.25) # reset speed
+            self._speed = 1 # reset speed
         else:
-            if self._speed < (self.user_speed/2):
-                self._speed = self._speed + 2
+            if self._speed < 50:
+                self._speed = self._speed + 1
             else:
-                self._speed = self.user_speed/2
+                self._speed = 50
+        
+        print(self._speed)
 
         if self._cmd == BTN_FORWARD:
             minicar.forward(self._speed*2-1)
@@ -77,6 +79,7 @@ class RemoteControlMode():
                 self._cmd_handlers[self._cmd]()
         
         else:
+            self._speed = 1 # reset speed
             minicar.stop()
         
         self._last_cmd = self._cmd
